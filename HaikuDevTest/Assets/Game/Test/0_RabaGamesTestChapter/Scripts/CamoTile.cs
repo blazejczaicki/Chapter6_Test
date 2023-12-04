@@ -5,35 +5,31 @@ using UnityEngine;
 
 public class CamoTile : MonoBehaviour {
 
-	public event Action<CamoTile> SelectTile;
+	public event Action<CamoTile> ClickTile;
 
 	[SerializeField] private SpriteRenderer _highlight;
 	private SpriteRenderer _spriteRenderer;
 
-	public bool IsSelected { get; set; }
-	public int index { get; set; }
+	public bool IsActive { get; set; }
+	public int TrueIndex { get; set; }
+	public int CurrentIndex { get; set; }
 
 	private void Awake()
 	{
 		_spriteRenderer = GetComponent<SpriteRenderer>();
-		IsSelected = false;
+        IsActive = true;
     }
 
     private void OnMouseDown()
     {
-		if (SelectTile != null)
-        {
-            SelectTile.Invoke(this);
-        }
-		IsSelected = !IsSelected;
+		if (IsActive == false)
+		{
+			return;
+		}
 
-        if (IsSelected)
-		{
-			OnSelect();
-        }
-		else
-		{
-			OnDeselect();
+		if (ClickTile != null)
+        {
+            ClickTile.Invoke(this);
         }
     }
 
