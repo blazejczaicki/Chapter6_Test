@@ -124,7 +124,7 @@ public class CamoTilePuzzle : PuzzleController {
 	{
 		for (int i = 0; i < _camoTiles.Length; i++)
 		{
-			Debug.Log(_camoTiles[i].CurrentIndex + "   " + _camoTiles[i].TrueIndex);
+			//Debug.Log(_camoTiles[i].CurrentIndex + "   " + _camoTiles[i].TrueIndex);
 			if (_camoTiles[i].CurrentIndex != _camoTiles[i].TrueIndex)
 			{
 				return false;
